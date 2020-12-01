@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态绑定class(数组语法)</title>
+</head>
+<style>
+    .active {
+        width: 100px;
+        color: pink;
+    }
+    
+    .bfa {
+        width: 100px;
+        background-color: #bfa;
+    }
+</style>
+
+<body>
+
+    <div id="app">
+        <h1 :class="['active','bfa']">{{message}}</h1>
+        <button @click="change">切换</button>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '9527',
+
+            },
+            methods: {
+
+            },
+        })
+    </script>
+</body>
+
+</html>

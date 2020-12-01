@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-cloak指令</title>
+</head>
+<style>
+    [v-cloak] {
+        display: none;
+    }
+</style>
+
+<body>
+
+    <!-- v-cloak指令避免数据渲染到页面时出现{{变量}}闪烁的情况 -->
+
+    <div id="app">
+        <p v-cloak>{{url}}</p>
+
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                url: `<a href="http://www.baidu.com">百度一下</a>`
+            },
+            methods: {
+
+            },
+        })
+    </script>
+</body>
+
+</html>

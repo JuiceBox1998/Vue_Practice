@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for与v-bind结合的练习</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-weight: bold;
+        font-size: larger;
+    }
+    
+    .toBfa {
+        color: #bfa;
+    }
+</style>
+
+<body>
+
+    <div id="app">
+        <ul>
+            <li v-for="(item, index) in movies" :key="index" :class="arr[index]" @click=" changeColor(index) ">
+                {{item}}
+            </li>
+
+        </ul>
+    </div>
+    <script src="./js/vue.js "></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                movies: ['海王', '海尔兄弟', '火影忍者', '进击的巨人'],
+                isToBfa: [true, false, false, false],
+                arr: ["toBfa ", " ", " ", " "],
+                temp: 0
+            },
+            methods: {
+                changeColor: function(index) {
+                    this.arr.splice(this.temp, 1, " ")
+                    this.temp = index
+                    this.arr.splice(this.temp, 1, "toBfa ")
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

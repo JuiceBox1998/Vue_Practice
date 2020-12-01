@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-pre指令</title>
+</head>
+
+<body>
+
+    <!-- v-pre指令不解析传入的数据显示形式{{数据}}-->
+
+    <div id="app">
+        <p v-pre>{{url}}</p>
+
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                url: `<a href="http://www.baidu.com">百度一下</a>`
+            },
+            methods: {
+
+            },
+        })
+    </script>
+</body>
+
+</html>

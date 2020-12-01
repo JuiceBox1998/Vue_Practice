@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-once指令</title>
+</head>
+
+<body>
+
+    <!-- v-once该指令表示元素和组件只渲染一次，不会随着数据改变而改变 -->
+
+    <div id="app">
+        <p>{{message}}</p>
+        <p v-once>{{message}}</p>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '我是v-once指令'
+            },
+            methods: {
+
+            },
+        })
+    </script>
+</body>
+
+</html>
