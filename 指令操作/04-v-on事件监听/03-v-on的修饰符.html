@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-v-on的修饰符</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- 1. .stop的使用：阻止事件冒泡,在事件后加上.stop -->
+        <div @click='divClick'>
+            <button @click.stop='btnClick'>9527</button>
+        </div><br>
+
+        <!-- 2. .prevent的使用：阻止默认行为,在事件后加上.prevent -->
+        <form action="9527">
+            <input type="submit" value="提交" @click.prevent='submitClick'>
+        </form><br>
+
+        <!-- 3监听某个键帽的点击 -->
+        <input type="text" @keyup.enter="keyUp">
+
+        <!-- 4. .once 只会触发一次 -->
+
+    </div>
+
+    <script src="/js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            computed: {
+
+            },
+            methods: {
+                btnClick() {
+                    console.log(`this is the click from button`);
+                },
+                divClick() {
+                    console.log(`this is the click from div`);
+                },
+                submitClick() {
+                    console.log(`this is the click from sumbit`);
+
+                },
+                keyUp() {
+                    console.log(9527);
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

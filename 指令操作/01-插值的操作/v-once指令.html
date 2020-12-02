@@ -4,22 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>v-html指令</title>
+    <title>v-once指令</title>
 </head>
 
 <body>
 
-    <!-- v-html会按照HTML格式进行解析，会将string的html解析并渲染到页面 -->
+    <!-- v-once该指令表示元素和组件只渲染一次，不会随着数据改变而改变 -->
+
     <div id="app">
-        <p v-html="url"></p>
+        <p>{{message}}</p>
+        <p v-once>{{message}}</p>
     </div>
 
-    <script src="../js/vue.js"></script>
+    <script src="/js/vue.js"></script>
     <script>
         const app = new Vue({
             el: '#app',
             data: {
-                url: `<a href="http://www.baidu.com">百度一下</a>`
+                message: '我是v-once指令'
             },
             methods: {
 

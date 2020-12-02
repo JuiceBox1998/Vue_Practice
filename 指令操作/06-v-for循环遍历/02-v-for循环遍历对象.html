@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-v-for循环遍历对象</title>
+</head>
+
+<body>
+    <!-- 遍历对象时，第一个值为value，第二个值为属性名 
+        第三个值为index-->
+    <div id="app">
+        <ul>
+            <li v-for="(item, key,index) in info" :key="index"> {{key}}：{{item}} ***索引为：{{index}}</li>
+        </ul>
+    </div>
+
+    <script src="/js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                info: {
+                    name: 'JuiceBox',
+                    age: 22,
+                    hobbies: '摸鱼',
+                }
+            },
+            computed: {
+
+            },
+            methods: {
+
+            },
+        })
+    </script>
+</body>
+
+</html>

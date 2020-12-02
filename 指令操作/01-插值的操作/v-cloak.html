@@ -4,34 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>动态绑定class(数组语法)</title>
+    <title>v-cloak指令</title>
 </head>
 <style>
-    .active {
-        width: 100px;
-        color: pink;
-    }
-    
-    .bfa {
-        width: 100px;
-        background-color: #bfa;
+    [v-cloak] {
+        display: none;
     }
 </style>
 
 <body>
 
+    <!-- v-cloak指令避免数据渲染到页面时出现{{变量}}闪烁的情况 -->
+
     <div id="app">
-        <h1 :class="['active','bfa']">{{message}}</h1>
-        <button @click="change">切换</button>
+        <p v-cloak>{{url}}</p>
+
     </div>
 
-    <script src="../js/vue.js"></script>
+    <script src="/js/vue.js"></script>
     <script>
         const app = new Vue({
             el: '#app',
             data: {
-                message: '9527',
-
+                url: `<a href="http://www.baidu.com">百度一下</a>`
             },
             methods: {
 

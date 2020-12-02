@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-bind基本使用</title>
+</head>
+
+<body>
+    <!-- v-bind绑定元素属性 -->
+
+    <div id="app">
+        <p><img v-bind:src="imgUrl"></p>
+        <!-- 语法糖写法 -->
+        <p><img :src="imgUrl"></p>
+    </div>
+
+    <script src="/js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                imgUrl: '//edu-image.nosdn.127.net/3310f128e53b406f94400f7ae6046db2.png?imageView&quality=100'
+            },
+            methods: {
+
+            },
+        })
+    </script>
+</body>
+
+</html>

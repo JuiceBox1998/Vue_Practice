@@ -4,24 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>v-once指令</title>
+    <title></title>
 </head>
 
 <body>
-
-    <!-- v-once该指令表示元素和组件只渲染一次，不会随着数据改变而改变 -->
-
     <div id="app">
-        <p>{{message}}</p>
-        <p v-once>{{message}}</p>
+        <h1 v-if="score>=90">优秀</h1>
+        <h1 v-else-if="score>=80">良好</h1>
+        <h1 v-else-if="score>=60">及格</h1>
+        <h1 v-else>不及格</h1>
+
     </div>
 
-    <script src="../js/vue.js"></script>
+    <script src="/js/vue.js"></script>
     <script>
         const app = new Vue({
             el: '#app',
             data: {
-                message: '我是v-once指令'
+                score: 90,
+            },
+            computed: {
+
             },
             methods: {
 

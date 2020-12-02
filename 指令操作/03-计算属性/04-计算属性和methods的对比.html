@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-计算属性和methods的对比</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- 直接拼接 -->
+        <p>{{firstName}} {{lastName}}</p>
+
+        <!-- 通过定义的methods的返回值 -->
+        <!-- 调用了5次 getFullname()-->
+        <p>{{getFullname()}}</p>
+        <p>{{getFullname()}}</p>
+        <p>{{getFullname()}}</p>
+        <p>{{getFullname()}}</p>
+        <p>{{getFullname()}}</p>
+
+
+        <!-- 通过computed -->
+        <!-- 调用了1次fullName() -->
+        <p>{{fullName}}</p>
+        <p>{{fullName}}</p>
+        <p>{{fullName}}</p>
+        <p>{{fullName}}</p>
+        <p>{{fullName}}</p>
+
+
+    </div>
+
+    <script src="/js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                firstName: 'Juice',
+                lastName: 'box'
+            },
+            computed: {
+                /*fullName: {
+                    set: function(newVal) {
+                        const names = newVal.split(' ')
+                        this.firstName = names[0]
+                        this.lastName = names[1]
+                    },
+                    get: function() {
+                        return this.firstName + ' ' + this.lastName
+                    }
+                }*/
+                fullName: function() {
+                    console.log('我是computed里的fullName，我被调用了');
+                    return this.firstName + ' ' + this.lastName
+                }
+            },
+            methods: {
+                getFullname: function() {
+                    console.log('我是methods里的getFullname，我被调用了');
+
+                    return this.firstName + ' ' + this.lastName
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
