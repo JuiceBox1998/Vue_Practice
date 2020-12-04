@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-组件的data为什么是函数</title>
+</head>
+
+<body>
+
+    <div id='app'>
+        <cpn1></cpn1>
+        <cpn1></cpn1>
+        <cpn1></cpn1>
+    </div>
+
+    <template id="cpn1">
+    <div>
+      <h2>{{message}}</h2>
+      <h3>当前计数为：{{counter}}</h3>
+      <button @click="decrement">-</button>
+      <button @click="increment">+</button>
+
+    </div>
+  </template>
+    <script src='/js/vue.js'></script>
+    <script>
+        Vue.component('cpn1', {
+            template: '#cpn1',
+            data() {
+                return {
+                    message: '计数器',
+                    counter: 0,
+                }
+            },
+            methods: {
+                increment() {
+                    this.counter++
+                },
+                decrement() {
+                    this.counter--
+                },
+            }
+        })
+        const app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-组件的语法糖注册</title>
+</head>
+
+<body>
+
+    <div id='app'>
+        <cpn1></cpn1>
+        <cnp2></cnp2>
+    </div>
+
+    <script src='/js/vue.js'></script>
+    <script>
+        // 全局组件注册的语法糖
+        Vue.component('cpn1', {
+            template: `    
+    <div>
+        <h2>我是cpn1</h2>
+        <p>我是组件cpn1</p>
+        <p>我是组件cpn1</p>
+    </div>`
+        })
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            components: {
+                'cnp2': {
+                    template: `<div>
+                    <h2>我是cpn2</h2>
+                    <p>我是组件cpn2</p>
+                    <p>我是组件cpn2</p>
+                    </div>`
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08-父子组件的通信</title>
+</head>
+
+<body>
+
+
+    <div id='app'>
+        <!-- 将父组件的数据绑定给子组件的变量 -->
+        <cpn :cfruits="fruits" :cmessage="message"></cpn>
+    </div>
+
+    <!-- 父传子通过props -->
+    <template id="cpn">
+    <div>
+      <!-- 将获取到的父组件的数据进行渲染 -->
+      <span v-for="(item, index) in cfruits" :key="index"> {{item}}</span>
+      <p>{{cmessage}}</p>
+    </div>
+  </template>
+    <script src='/js/vue.js'></script>
+    <script>
+        const cpn = {
+            template: '#cpn',
+
+            // 使用数组时
+            // props: ['cfruits', 'cmessage'], //里面的字符串为该子组件的变量名
+
+            //使用对象时
+            props: {
+                cfruits: Array, //可以作传入数据的类型限制
+                // cmessage: String,
+
+                cmessage: { //也可以指定默认值
+                    type: String,
+                    default: '我是默认值',
+                    required: true
+                }
+            },
+            data() {
+                return {
+
+                }
+            },
+        }
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '我是vue实例的数据',
+                fruits: ['苹果', '香蕉', '桃子', '西瓜', '草莓', '芒果']
+            },
+            components: {
+                cpn
+            }
+        })
+    </script>
+</body>
+
+</html>

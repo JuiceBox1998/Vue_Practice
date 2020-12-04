@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-父组件和子组件</title>
+</head>
+
+<body>
+
+    <div id='app'>
+        <cnp1></cnp1>
+        <cnp2></cnp2>
+    </div>
+
+    <script src='/js/vue.js'></script>
+    <script>
+        // 创建组件1构造器对象(子组件)
+        const cpnC1 = Vue.extend({
+            template: `    
+    <div>
+        <h2>我是cpnC1</h2>
+        <p>我是组件1</p>
+        <p>我是组件1</p>
+    </div>`
+        })
+
+        // 创建组件2构造器对象，并在里面注册组件1(父组件)
+        const cpnC2 = Vue.extend({
+            template: `    
+    <div>
+        <h2>我是cpnC2</h2>
+        <p>我是组件2</p>
+        <p>我是组件2</p>
+        <cnp1></cnp1>
+    </div>`,
+            components: {
+                cnp1: cpnC1
+            }
+        })
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: 9527
+            },
+            components: {
+                cnp2: cpnC2,
+                // cnp1: cpnC1
+            }
+        })
+    </script>
+</body>
+
+</html>
