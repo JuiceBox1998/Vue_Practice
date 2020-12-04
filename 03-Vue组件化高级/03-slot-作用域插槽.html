@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-slot-作用域插槽</title>
+</head>
+
+<body>
+
+    <div id='app'>
+        <cpn></cpn>
+
+        <cpn>
+            <!-- 绑定在 <slot> 元素上的 attribute 被称为插槽 prop 
+              我们可以使用带值的 v-slot 来定义我们提供的插槽 prop 的名字  -->
+            <template #default="slotProps">
+                <!-- <span v-for="(item, index) in slotProps.languages" :key="index">{{item}}----</span> -->
+                <span>{{slotProps.languages.join(' - ')}}</span>
+            </template>
+
+            <template #test>
+                <h1>9527</h1>
+            </template>
+        </cpn>
+
+
+
+
+
+    </div>
+
+    <template id="cpn">
+        <div>
+            <!-- 为了让languages在父级的插槽内容中可用
+            我们可以将languages作为 <slot> 元素的一个 attribute 绑定上去-->
+            <slot :languages='languages'></slot>
+            <slot name="test">
+                <ul>
+                    <li v-for="(item, index) in languages" :key="index">
+                        {{item}}
+                    </li>
+                </ul>
+            </slot>
+        </div>
+    </template>
+    <script src='/js/vue.js'></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            components: {
+                cpn: {
+                    template: '#cpn',
+                    data() {
+                        return {
+                            languages: ['JavaScript', 'c++', 'Java', 'c#', 'Python', 'Go',
+                                'swift'
+                            ]
+                        }
+                    },
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>

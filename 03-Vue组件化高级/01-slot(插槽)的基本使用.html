@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-slot(插槽)的基本使用</title>
+</head>
+
+<body>
+
+    <div id='app'>
+        <cpn></cpn>
+        <cpn>
+            <p>哈哈哈哈哈</p>
+        </cpn>
+        <cpn><span>呵呵呵呵</span></cpn>
+
+    </div>
+
+
+    <template id="cpn">
+    <div>
+      <h1>我是组件cpn</h1>
+      <slot><button>我是插槽默认显示的</button></slot>
+    </div>
+  </template>
+    <script src='/js/vue.js'></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            components: {
+                cpn: {
+                    template: "#cpn",
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
