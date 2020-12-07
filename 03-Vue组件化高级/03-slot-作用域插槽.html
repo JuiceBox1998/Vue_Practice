@@ -11,11 +11,10 @@
 
     <div id='app'>
         <cpn></cpn>
-
         <cpn>
             <!-- 绑定在 <slot> 元素上的 attribute 被称为插槽 prop 
               我们可以使用带值的 v-slot 来定义我们提供的插槽 prop 的名字  -->
-            <template #default="slotProps">
+            <template #test="slotProps">
                 <!-- <span v-for="(item, index) in slotProps.languages" :key="index">{{item}}----</span> -->
                 <span>{{slotProps.languages.join(' - ')}}</span>
             </template>
@@ -24,11 +23,6 @@
                 <h1>9527</h1>
             </template>
         </cpn>
-
-
-
-
-
     </div>
 
     <template id="cpn">
