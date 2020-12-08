@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-axios的使用</title>
+</head>
+
+<body>
+
+    <script src="/04-前后端交互/myapi/node_modules/axios/dist/axios.js"></script>
+    <script>
+        //axios请求参数传递
+
+        // axios get请求传参
+        // axios.get('http://localhost:3000/axios?id=123').then(function(ret){
+        //   console.log(ret.data)
+        // })
+        // axios.get('http://localhost:3000/axios/123').then(function(ret){
+        //   console.log(ret.data)
+        // })
+        // axios.get('http://localhost:3000/axios', {
+        //   params: {
+        //     id: 789
+        //   }
+        // }).then(function(ret){
+        //   console.log(ret.data)
+        // })
+
+        // axios delete 请求传参
+        // axios.delete('http://localhost:3000/axios', {
+        //   params: {
+        //     id: 111
+        //   }
+        // }).then(function(ret){
+        //   console.log(ret.data)
+        // })
+
+        // axios post 请求传参
+        // axios.post('http://localhost:3000/axios', {
+        //   uname: 'lisi',
+        //   pwd: 123
+        // }).then(function(ret){
+        //   console.log(ret.data)
+        // })
+        // var params = new URLSearchParams();
+        // params.append('uname', 'zhangsan');
+        // params.append('pwd', '111');
+        // axios.post('http://localhost:3000/axios', params).then(function(ret){
+        //   console.log(ret.data)
+        // })
+
+        // axios put 请求传参
+        // axios.put('http://localhost:3000/axios/123', {
+        //     uname: 'lisi',
+        //     pwd: 123
+        // }).then(function(ret) {
+        //     console.log(ret.data)
+        // })
+
+        //axios 响应结果与全局配置
+
+        // axios.get('http://localhost:3000/axios-json').then(function(ret){
+        //   console.log(ret.data.uname)
+        // })
+
+        /********************************************************/
+
+        // 配置请求的基准URL地址
+        axios.defaults.baseURL = 'http://localhost:3000/';
+        // 配置请求头信息
+        axios.defaults.headers['mytoken'] = 'hello';
+        axios.get('axios-json').then(function(ret) {
+            console.log(ret.data.uname)
+        })
+
+        /********************************************************/
+        // 拦截器
+        axios.interceptors.request.use(function(config) {
+            console.log(config.url)
+            config.headers.mytoken = 'nihao';
+            return config;
+        }, function(err) {
+            console.log(err)
+        })
+
+        axios.interceptors.response.use(function(res) {
+            // console.log(res)
+            var data = res.data;
+            return data;
+        }, function(err) {
+            console.log(err)
+        })
+        axios.get('http://localhost:3000/adata').then(function(data) {
+            console.log(data)
+        })
+    </script>
+</body>
+
+</html>
