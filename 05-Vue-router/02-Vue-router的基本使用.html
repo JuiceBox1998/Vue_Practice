@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-Vue-router的基本使用</title>
+</head>
+
+<body>
+
+    <div id='app'>
+
+        <!-- 被 vm 实例所控制的区域 -->
+        <router-link to="/user">User</router-link>
+        <router-link to="/regisater">Regisater</router-link>
+
+        <!-- 路由填充位 -->
+        <router-view></router-view>
+    </div>
+
+
+    <script src='/js/vue.js'></script>
+    <script src="/js/vue-router.js"></script>
+    <script>
+        const User = {
+            template: `<h1>User组件</h1>`
+        }
+        const Regisater = {
+            template: `<h1>Regisater组件</h1>`
+        }
+
+        // 创建路由实例对象
+        const router = new VueRouter({
+            // 所有的路由规则
+            routes: [{
+                path: '/user',
+                component: User
+            }, {
+                path: '/regisater',
+                component: Regisater
+            }]
+        })
+
+        // 创建vue实例
+        const app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            router
+        })
+    </script>
+</body>
+
+</html>
